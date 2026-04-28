@@ -1,0 +1,21 @@
+[railway]
+  plugin = "docker"
+
+[build]
+  builder = "DOCKERFILE"
+  dockerfilePath = "Dockerfile"
+
+[deploy]
+  startCommand = "bash backend/start.sh"
+  healthCheckPath = "/health"
+  restartPolicyType = "ON_FAILURE"
+  restartPolicyMaxRetries = 10
+
+[settings]
+  # Use CPU plan for free tier
+  cpu = "STANDARD"
+  memory = "512"
+
+[environment]
+  # These MUST be set in Railway dashboard under Variables
+  # See .env.railway.example for all required variables
